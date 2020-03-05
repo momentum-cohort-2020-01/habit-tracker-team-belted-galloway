@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
+    'django_extensions',
     'core',
 ]
 
@@ -122,6 +123,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL ='/'
+ACCOUNT_ACCTIVATION_DAYS = 3
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 INTERNAL_IPS = [

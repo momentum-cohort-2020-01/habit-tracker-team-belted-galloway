@@ -16,8 +16,15 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
+from core import views
 
 urlpatterns = [
+    path('', include('django.contrib.auth.urls')),
+    path('', views.habit_list, name='habit-list'),
+    path('habit/new/<int:pk>', views.new_habit, name='new-habit'),
+    path('habit/<int:pk>/', views.habit_detail, name='habit-detail'),
+    path('habit/<int:pk>/edit', views.edit_habit, name='edit-habit'),
+    path('habit/<int:pk>/delete', views.delete_habit, name='delete-habit'),
     path('accounts/', include('registration.backends.default.urls')),
     path('admin/', admin.site.urls),
 ]

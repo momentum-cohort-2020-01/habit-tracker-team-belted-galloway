@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+   {{habit.habit}}
+   {{habit.goal}}
+</div>
+<div>
+    <a href="{% url 'edit-habit', pk=habit.pk %}" class='button'>Edit Habit</a>
+    <a href="{% url 'delete-habit', pk=habit.pk %}" class='button'>Delete Habit</a>
+    <a href="{% url 'habit-list'%}" class="button">Home</a>
+
+</div>
+
+{% endblock %}

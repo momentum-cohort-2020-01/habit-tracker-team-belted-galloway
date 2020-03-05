@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    <p class="sort">Log:</p>
+    <button class="button">Add Habit</button>
+    <button class="button">Edit Habit</button>
+    <button class="button">Delete Habit</button>
+</div>
+<div>
+    <h3 class='habit'>{{habit.habit}}</h3>
+    <h4 class='goal'>{{habit.goal}}</h4>
+
+</div>
+
+{% endblock %}
