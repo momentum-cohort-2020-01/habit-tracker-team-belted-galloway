@@ -9,7 +9,7 @@ class HabitForm(forms.ModelForm):
 
     class Meta:
         model = Habit
-        fields = ('habit', 'goal',)
+        fields = ('name', 'goal',)
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField()
