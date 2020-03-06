@@ -5,7 +5,7 @@ from django.utils import timezone
 from .models import Habit, Unit, DailyLog
 from .forms import HabitForm
 
-
+@login_required
 def habit_list(request):
     habits = Habit.objects.all()
     return render(request, 'core/habit_list.html', {'habits': habits})
@@ -13,19 +13,22 @@ def habit_list(request):
 
 def habit_detail(request, pk):
     habit = Habit.objects.get(pk=pk)
-    return render(request, 'core/habit_detail.html', {'habit': habit, 'pk': pk})
+    habits = Habit.objects.all()
+    logs = DailyLog.filter(habit=habit)
+    return render(request, 'core/habit_detail.html', {'habit': habit, 'habits': habits, 'pk': pk, 'logs': logs})
 
 
-def new_habit(request, pk):
+def new_habit(request):
+    habit = Habit.objects.all()
     if request.method == 'POST':
         form = HabitForm(request.POST)
         if form.is_valid():
             habit = form.save(commit=False)
             habit.save()
-            return redirect('habit-list', pk=habit.pk)
+            return redirect('habit-list')
     else:
         form = HabitForm()
-    return render(request, 'core/new_habit.html', {'form': form})
+    return render(request, 'core/new_habit.html', {'form': form, 'habit': habit})
 
 
 def edit_habit(request, pk):

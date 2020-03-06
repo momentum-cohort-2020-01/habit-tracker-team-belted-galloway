@@ -4,8 +4,6 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 
 
-
-
 class Habit(models.Model):
     name = models.CharField(max_length=500)
     goal = models.CharField(max_length=500)
