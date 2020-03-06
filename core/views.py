@@ -16,13 +16,13 @@ def habit_detail(request, pk):
     return render(request, 'core/habit_detail.html', {'habit': habit, 'pk': pk})
 
 
-def new_habit(request, pk):
+def new_habit(request):
     if request.method == 'POST':
         form = HabitForm(request.POST)
         if form.is_valid():
             habit = form.save(commit=False)
             habit.save()
-            return redirect('habit-list', pk=habit.pk)
+            return redirect('habit-list')
     else:
         form = HabitForm()
     return render(request, 'core/new_habit.html', {'form': form})

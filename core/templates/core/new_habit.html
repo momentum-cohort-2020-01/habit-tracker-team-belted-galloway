@@ -4,7 +4,7 @@
 
 <h2> New Habit </h2>
     <form action="" method="POST" class="habit-form">{% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_table }}
         <button type='submit' class='save' value='Submit'>Save</button>
     </form>
 {% endblock %}

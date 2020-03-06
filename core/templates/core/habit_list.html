@@ -2,14 +2,17 @@
 
 {% block content %}
 <body>
+    <h2 class="sort">Daily Log: </h2>
     <div>
-        <p class="sort">Daily Log:</p>
-        <h3 class='habit'>{{habit.name}}</h3>
-        <h4 class='goal'>{{habit.goal}}</h4>
+    {% for habit in habits %}
+        <p class="habit-name">What would you like to work on: {{habit.goal}}</p>
+        <p class="habit-goal">My goal: {{habit.goal_value}} {{habit.goal_unit}} {{habit.goal_unit}}</p>
         <button class="button">Add Habit</button>
         <button class="button">Edit Habit</button>
         <button class="button">Delete Habit</button>
     </div>
+
+    {% endfor %}
 
 </body>
 {% endblock %}
