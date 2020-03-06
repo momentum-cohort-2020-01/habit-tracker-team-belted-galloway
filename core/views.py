@@ -13,10 +13,13 @@ def habit_list(request):
 
 def habit_detail(request, pk):
     habit = Habit.objects.get(pk=pk)
-    return render(request, 'core/habit_detail.html', {'habit': habit, 'pk': pk})
+    habits = Habit.objects.all()
+    logs = DailyLog.filter(habit=habit)
+    return render(request, 'core/habit_detail.html', {'habit': habit, 'habits': habits, 'pk': pk, 'logs': logs})
 
 
 def new_habit(request):
+    habit = Habit.objects.all()
     if request.method == 'POST':
         form = HabitForm(request.POST)
         if form.is_valid():
@@ -25,7 +28,7 @@ def new_habit(request):
             return redirect('habit-list')
     else:
         form = HabitForm()
-    return render(request, 'core/new_habit.html', {'form': form})
+    return render(request, 'core/new_habit.html', {'form': form, 'habit': habit})
 
 
 def edit_habit(request, pk):
