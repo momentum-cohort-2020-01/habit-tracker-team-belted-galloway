@@ -12,8 +12,3 @@ class HabitForm(forms.ModelForm):
         model = Habit
         fields = ('name', 'goal', 'goal_value', 'goal_unit', 'user')
 
-class RegisterForm(UserCreationForm):
-    email = forms.EmailField()
-    class Meta:
-            model = User
-            fields = ('username', 'email', 'password1', 'password2')

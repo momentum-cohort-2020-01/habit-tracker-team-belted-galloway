@@ -8,8 +8,8 @@ verify_ssl = true
 [packages]
 django = "*"
 django-debug-toolbar = "*"
-django-registration-redux = "*"
 django-extensions = "*"
+django-registration-redux = "*"
 
 [requires]
 python_version = "3.8"

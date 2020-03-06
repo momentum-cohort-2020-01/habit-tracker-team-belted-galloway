@@ -5,7 +5,7 @@ from django.utils import timezone
 from .models import Habit, Unit, DailyLog
 from .forms import HabitForm
 
-
+@login_required
 def habit_list(request):
     habits = Habit.objects.all()
     return render(request, 'core/habit_list.html', {'habits': habits})
