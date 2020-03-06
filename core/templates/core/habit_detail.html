@@ -2,8 +2,8 @@
 
 {% block content %}
 <div>
-   {{habits.habit}}
-   {{habits.goal}}
+   {{habit.name}}
+   {{habit.goal}}
 </div>
 <div>
     <a href="{% url 'new-habit', pk=habit.pk %}" class="button">Add Habit</a>
