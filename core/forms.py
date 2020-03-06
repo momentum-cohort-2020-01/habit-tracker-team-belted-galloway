@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 
-from .models import Habit
+from .models import Habit, DailyLog
 from django.contrib.auth.models import User
 
 class HabitForm(forms.ModelForm):
