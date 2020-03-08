@@ -4,8 +4,10 @@
 
 <h2> New Habit </h2>
     <form action="" method="POST" class="habit-form">{% csrf_token %}
-       <p>Test {{habit.goal}}</p>
-        {{ form.as_p}}
-        <button type='submit' class='save' value='Submit'>Save</button>
+       <p>{{habit.goal}}</p>
+       <table class="details">
+            {{ form.as_table}}
+        </table>
+        <button type='submit' class='button' value='Submit'>Save</button>
     </form>
 {% endblock %}

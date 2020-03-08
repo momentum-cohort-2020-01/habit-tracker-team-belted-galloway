@@ -12,3 +12,8 @@ class HabitForm(forms.ModelForm):
         model = Habit
         fields = ('goal', 'goal_value', 'goal_unit', 'user')
 
+class DailyLogForm(forms.ModelForm):
+
+    class Meta:
+        model = DailyLog
+        fields = ('habit', 'activity_date', 'value', 'comments')
