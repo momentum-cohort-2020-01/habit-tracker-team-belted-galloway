@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-
+from bokeh.plotting import figure, output_file, show
 from .models import Habit, Unit, DailyLog, User
 from .forms import HabitForm, DailyLogForm
 
@@ -83,3 +83,12 @@ def delete_log(request, pk):
     log.delete()
     return redirect('habit-list')
 
+
+def chart(request):
+    p = figure(
+        title = 'Goals',
+        x_axis_label= 'Daily goal',
+        y_axis_label='Goal'
+    )
+    p.line(x,y, legend='Test', line_width=2)
+    show(p)    

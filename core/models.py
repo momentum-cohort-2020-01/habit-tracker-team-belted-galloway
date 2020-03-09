@@ -1,5 +1,6 @@
 import datetime
 from django.db import models
+from django_matplotlib.fields import MatplotlibFigureField
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 
@@ -46,3 +47,7 @@ class DailyLog(models.Model):
 
     class Meta:
         unique_together = ('habit', 'activity_date')
+
+
+class MyModelWithFigure(models.Model):
+    fig = MatplotlibFigureField(figure='test_figure', verbose_name='figure', silent=True)

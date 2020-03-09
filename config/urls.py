@@ -20,6 +20,8 @@ from core import views
 
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
+    path('', include('bokeh.urls')),
+    path('habit/chart/', views.chart, name='chart'),
     path('', views.habit_list, name='habit-list'),
     path('habit/new/', views.new_habit, name='new-habit'),
     path('habit/<int:pk>/', views.habit_detail, name='habit-detail'),
