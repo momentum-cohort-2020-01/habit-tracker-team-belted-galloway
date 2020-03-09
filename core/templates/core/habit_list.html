@@ -2,15 +2,17 @@
 {% load static %}
 
 {% block content %}
+<h3> <a href="{% url 'new-habit' %}"><button class="button">Add Habit</button></a></h3>
 <body>
     <h2 class="sort">Daily Log: </h2>
     <div>
     {% for habit in habits %}
         <p class="habit-name">What would you like to work on: {{habit.goal}}</p>
-        <p class="habit-goal">My goal: {{habit.goal_value}} {{habit.goal_unit}}</p>
-        <button class="button">Add Habit</button>
-        <button class="button">Edit Habit</button>
-        <button class="button">Delete Habit</button>
+        <p class="habit-goal">My Daily Goal: {{habit.goal_value}} {{habit.goal_unit}}</p>
+        <p class="habit-tracked">Days tracked: {{habit.get_days_tracked}}</p>
+        <a href="{% url 'track-habit' habit.pk %}"><button class="button">Track Habit</button></a>
+        <a href="{% url 'edit-habit' habit.pk %}"><button class="button">Edit Habit</button></a>
+        <a href="{% url 'delete-habit' habit.pk %}"><button class="button">Delete Habit</button></a>
     </div>
 
     {% endfor %}
