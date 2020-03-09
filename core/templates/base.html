@@ -7,6 +7,14 @@
     <title>Habit Tracker</title>
     {% endblock %}
 </head>
+<header>
+    <a class="home-button" href="{% url 'habit-list' %}">
+        <div>
+            <a class="logout" href="/accounts/logout/">Logout</a>
+        </div>
+    </a>
+</header>
+
 <body>
     <h1>Habit Tracker </h1>
     

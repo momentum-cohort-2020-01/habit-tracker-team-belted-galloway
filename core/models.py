@@ -8,7 +8,7 @@ class Habit(models.Model):
     name = models.CharField(max_length=500)
     goal = models.CharField(max_length=500)
     goal_value = models.IntegerField(default =1)
-    goal_unit = models.ForeignKey('Unit', on_delete=models.CASCADE, blank=True, null=True)
+    goal_unit = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(to=User, related_name='users_habits', on_delete=models.CASCADE, blank=True, null=True)
@@ -18,6 +18,10 @@ class Habit(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+
+    @property
+    def get_days_tracked(self):
+        return len(self.habit_log.all())
 
 class Unit(models.Model):
     name = models.CharField(max_length=100)
@@ -39,3 +43,6 @@ class DailyLog(models.Model):
 
     def __str__(self):
         return f'Date Tracked: {self.activity_date}, Habit: {self.habit.pk}'
+
+    class Meta:
+        unique_together = ('habit', 'activity_date')

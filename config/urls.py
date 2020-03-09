@@ -23,9 +23,10 @@ urlpatterns = [
     path('', views.habit_list, name='habit-list'),
     path('habit/new/', views.new_habit, name='new-habit'),
     path('habit/<int:pk>/', views.habit_detail, name='habit-detail'),
-    path('habit/<int:pk>/edit', views.edit_habit, name='edit-habit'),
-    path('habit/<int:pk>/delete', views.delete_habit, name='delete-habit'),
-    path('accounts/', include('registration.backends.default.urls')),
+    path('habit/edit/<int:pk>/', views.edit_habit, name='edit-habit'),
+    path('habit/<int:pk>/delete/', views.delete_habit, name='delete-habit'),
+    path('habit/track/<int:pk>/', views.track_habit, name ='track-habit'),
+    path('accounts/', include('registration.backends.default.urls'), name='login'),
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:
